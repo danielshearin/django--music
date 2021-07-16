@@ -5,6 +5,7 @@ from django.utils import timezone
 class Album(models.Model):
     title = models.CharField(max_length=40)
     artist = models.CharField(max_length=40)
+    # text = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     
