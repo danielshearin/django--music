@@ -5,6 +5,11 @@
     padding: 10px 10px 10px 20px;
 }
 
+body {
+    background-color: #fff7ec;
+}
+
+
 .page-header h1,
 .page-header h1 a,
 .page-header h1 a:visited,
