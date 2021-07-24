@@ -1,9 +1,14 @@
 {% extends 'albums/base.html' %}
 
+
 {% block content %}
-<form method='POST' class='post-form'>{% csrf_token %}
+
+<form action="." method='post' class='post-form'>
+    {% csrf_token %}
+    <h3>add album</h3>
+    <br>
     {{ form.as_p }}
     <button type='submit' class='save btn btn-default'>Save</button>
-
 </form>
+
 {% endblock %}

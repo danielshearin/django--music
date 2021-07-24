@@ -1,11 +1,37 @@
 {% extends 'albums/base.html' %}
 
 {% block content %}
-    {% for album in albums %} 
-        <article class="album">
-            <h2><a href="{% url 'album_detail' pk=album.pk %}">{{ album.title }}</a></h2>
-            <p>{{ album.artist|linebreaksbr }}</p>
-        </article>
+<article class="album">
+    <aside class="actions">
+        sort by:<br>
+        <a href="{% url 'album_list' %}">artist</a><br>
+        <a href="{% url 'album_list_title' %}">title</a><br>
+        <a href="{% url 'album_list_year' %}">year</a><br>
+        <a href="{% url 'album_list_favorite' %}">favs {% include './icons/star-fill.svg' %}</a>
+
+        <!-- {% include './icons/star-fill.svg' %} favorite
+        {% include './icons/star.svg' %} not-favorite -->
+    </aside>
+</article>
+{% for album in albums %} 
+    <article class="album">
+        <h2><a href="{% url 'album_detail' pk=album.pk %}">{{ album }}</a></h2>
+        <h4><a href="{% url 'artist_page' pk=album.artist.pk %}">{{ album.artist|linebreaksbr }}</a>
+        </h4>
+        <h5>{% if album.favorite == True %}
+            <a href="{% url 'album_not_favorite' pk=album.pk %}" onclick="return confirm('Not one of your favorites?')">
+                {% include './icons/star-fill.svg' %}</a>
+                <br>
+                <br>
+            {% elif album.favorite == False %}
+            <a href="{% url 'album_favorite' pk=album.pk %}" onclick="return confirm('One of your favorites?')">
+                {% include './icons/star.svg' %}</a>
+                <br>
+                <br>
+            {% endif %}
+        </h5>
+    </article>
     {% endfor %}
 {% endblock %}
+
 
