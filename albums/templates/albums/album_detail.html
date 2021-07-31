@@ -1,6 +1,22 @@
 {% extends 'albums/base.html' %}
 
 {% block content %}
+<aside class="side_bar">
+    {% if user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'album_edit' pk=album.pk %}">
+        {% include './icons/pencil-fill.svg' %} change it
+    </a>
+    <a class="btn btn-default" href="{% url 'album_delete' pk=album.pk %}"
+        onclick="return confirm('Sure bout that?')">
+        {% include './icons/trash.svg' %} trash it
+    </a>
+    <a class="btn btn-default" href="{% url 'album_favorite' pk=album.pk %}"
+        onclick="return confirm('One of your favorites?')">
+        {% include './icons/star.svg' %} favorite
+    </a>
+    {% endif %}
+</aside>
+</article>
 <div class="albums">
     <article class="album">
     <h2>{{ album.title }}</h2>
@@ -8,30 +24,19 @@
     <h5>{{ album.year }}</h5>
     <h5>
         {% if album.favorite == True %}
-        <a href="{% url 'album_not_favorite' pk=album.pk %}" onclick="return confirm('Not one of your favorites?')">
+        <a class="btn btn-album" href="{% url 'album_not_favorite' pk=album.pk %}" onclick="return confirm('Not one of your favorites?')">
             {% include './icons/star-fill.svg' %}</a>
         {% elif album.favorite == False %}
-        <a href="{% url 'album_favorite' pk=album.pk %}" onclick="return confirm('One of your favorites?')">
+        <a class="btn btn-album" href="{% url 'album_favorite' pk=album.pk %}" onclick="return confirm('One of your favorites?')">
             {% include './icons/star.svg' %}</a>
         {% endif %}
+        <a class="btn btn-album" href="{% url 'album_delete' pk=album.pk %}"
+        onclick="return confirm('Sure bout that?')">
+        {% include './icons/trash.svg' %}
+        <a class="btn btn-album" href="{% url 'album_edit' pk=album.pk %}">
+            {% include './icons/pencil-fill.svg' %}</a>
     </h5>
 
     </article>
 </div>
-<aside class="side_bar">
-        {% if user.is_authenticated %}
-        <a class="btn btn-default" href="{% url 'album_edit' pk=album.pk %}">
-            {% include './icons/pencil-fill.svg' %} change it
-        </a><br>
-        <a class="btn btn-default" href="{% url 'album_delete' pk=album.pk %}"
-            onclick="return confirm('Sure bout that?')">
-            {% include './icons/trash.svg' %} trash it
-        </a><br>
-        <a class="btn btn-default" href="{% url 'album_favorite' pk=album.pk %}"
-            onclick="return confirm('One of your favorites?')">
-            {% include './icons/star.svg' %} favorite
-        </a>
-        {% endif %}
-    </aside>
-</article>
 {% endblock %}
