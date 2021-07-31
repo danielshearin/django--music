@@ -2,15 +2,33 @@
 
 
 {% block content %}
-<h2>
-<article class='artist'>
-    {{ artist }}
-</article>
-    <br>
-</h4>
+<div class='albums'>
 {% for album in artist.albums.all %}
     <article class='album'>
-    <h4><a href="{% url 'album_detail' pk=album.pk %}">{{ album }}</a></h4>
+        <h2><a href="{% url 'album_detail' pk=album.pk %}">{{ album }}</a></h2>
+        <h5>{{ album.year }}</h5>
+        <h5>
+        {% if album.favorite == True %}
+        <a href="{% url 'album_not_favorite' pk=album.pk %}" onclick="return confirm('Not one of your favorites?')">
+            {% include './icons/star-fill.svg' %}</a>
+        {% elif album.favorite == False %}
+        <a href="{% url 'album_favorite' pk=album.pk %}" onclick="return confirm('One of your favorites?')">
+            {% include './icons/star.svg' %}</a>
+        {% endif %}
+        <a href="{% url 'album_delete' pk=album.pk %}"
+        onclick="return confirm('Sure bout that?')">
+        {% include './icons/trash.svg' %}
+        <a href="{% url 'album_edit' pk=album.pk %}">
+            {% include './icons/pencil-fill.svg' %}</a>
+        </h5>
     </article>
 {% endfor %}
+</div>
+<aside class="side_bar">
+    <h2>
+        <article class='artist'>
+            {{ artist }}
+        </article>
+    </h2>
+</aside>
 {% endblock %} 

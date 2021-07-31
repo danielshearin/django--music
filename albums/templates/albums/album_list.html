@@ -1,37 +1,50 @@
 {% extends 'albums/base.html' %}
 
 {% block content %}
-<article class="album">
+
+<div class="albums">
+    {% for album in albums %}
+        <article class="album">
+        <!-- <div> -->
+            <h2><a href="{% url 'album_detail' pk=album.pk %}">{{ album }}</a></h2>
+            <h4><a href="{% url 'artist_page' pk=album.artist.pk %}">{{ album.artist|linebreaksbr }}</a>
+            </h4>
+            <h5>
+                {{ album.year }}
+            </h5>
+            <h5>
+                {% if album.favorite == True %}
+                <a href="{% url 'album_not_favorite' pk=album.pk %}" onclick="return confirm('Not one of your favorites?')">
+                    {% include './icons/star-fill.svg' %}</a>
+                    <!-- <br>
+                    <br> -->
+                {% elif album.favorite == False %}
+                <a href="{% url 'album_favorite' pk=album.pk %}" onclick="return confirm('One of your favorites?')">
+                    {% include './icons/star.svg' %}</a>
+                    <!-- <br>
+                    <br> -->
+                {% endif %}
+                <!-- <br> -->
+                <a href="{% url 'album_delete' pk=album.pk %}"
+                onclick="return confirm('Sure bout that?')">
+                {% include './icons/trash.svg' %}
+                <a href="{% url 'album_edit' pk=album.pk %}">
+                    {% include './icons/pencil-fill.svg' %}
+            </a><br>
+            </h5>
+        <!-- </div> -->
+        </article>
+    {% endfor %}
+</div>
+<article class="nav_bar">
     <aside class="actions">
         sort by:<br>
         <a href="{% url 'album_list' %}">artist</a><br>
         <a href="{% url 'album_list_title' %}">title</a><br>
         <a href="{% url 'album_list_year' %}">year</a><br>
         <a href="{% url 'album_list_favorite' %}">favs {% include './icons/star-fill.svg' %}</a>
-
-        <!-- {% include './icons/star-fill.svg' %} favorite
-        {% include './icons/star.svg' %} not-favorite -->
     </aside>
 </article>
-{% for album in albums %} 
-    <article class="album">
-        <h2><a href="{% url 'album_detail' pk=album.pk %}">{{ album }}</a></h2>
-        <h4><a href="{% url 'artist_page' pk=album.artist.pk %}">{{ album.artist|linebreaksbr }}</a>
-        </h4>
-        <h5>{% if album.favorite == True %}
-            <a href="{% url 'album_not_favorite' pk=album.pk %}" onclick="return confirm('Not one of your favorites?')">
-                {% include './icons/star-fill.svg' %}</a>
-                <br>
-                <br>
-            {% elif album.favorite == False %}
-            <a href="{% url 'album_favorite' pk=album.pk %}" onclick="return confirm('One of your favorites?')">
-                {% include './icons/star.svg' %}</a>
-                <br>
-                <br>
-            {% endif %}
-        </h5>
-    </article>
-    {% endfor %}
 {% endblock %}
 
 

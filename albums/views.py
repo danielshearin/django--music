@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Album, Artist
 from .forms import AlbumForm, AlbumFormSet
 from .forms import ArtistForm, AlbumArtistForm, OrderByForm
+from django.utils.datastructures import MultiValueDictKeyError
 
 
 
@@ -108,10 +109,13 @@ def create_artist(request):
             title = form.data['title']
             artist = form.data['artist']
             year = form.data['year']
-            favorite = form.data['favorite']
-            if favorite == 'on':
-                favorite = True
-            else:
+            try:
+                favorite = form.data['favorite']
+                if favorite == 'on':
+                    favorite = True
+                # else:
+                #     favorite = False
+            except MultiValueDictKeyError:
                 favorite = False
             validated_artist = Artist.objects.get_or_create(artist=artist)[0]
             album = Album.objects.create(artist=validated_artist, title=title, year=year, favorite=favorite)

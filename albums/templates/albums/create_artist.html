@@ -3,12 +3,13 @@
 
 {% block content %}
 
+<article class="album">
 <form action="." method='post' class='post-form'>
     {% csrf_token %}
     <h3>add album</h3>
-    <br>
-    {{ form.as_p }}
-    <button type='submit' class='save btn btn-default'>Save</button>
+    <h6>{{ form.as_p }}</h6>
 </form>
+</article>
+<button type='submit' class='save btn btn-default'>Save</button>
 
 {% endblock %}

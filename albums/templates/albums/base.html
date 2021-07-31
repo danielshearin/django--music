@@ -4,8 +4,7 @@
 
 <head>
     <title>Albums</title>
-    <!-- <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic"> -->
+
     <link rel="stylesheet" href="{% static 'css/albums.css' %}">
 </head>
 
@@ -20,11 +19,11 @@
     </header>
     
     <main class="container">
-        <div class="row">
-            <div class="col">
+        <div class="wrapper">
+            <!-- <div class="col"> -->
                 {% block content %}
                 {% endblock %}
-            </div>
+            <!-- </div> -->
         </div>
     </main>
 </body>

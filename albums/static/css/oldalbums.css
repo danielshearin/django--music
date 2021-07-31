@@ -1,0 +1,168 @@
+/* @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"; */
+
+.page-header {
+    background-color: #000000;
+    margin-top: 0;
+    margin-bottom: 40px;
+    padding: 10px 10px 10px 20px;
+}
+
+body {
+    background-color: #fff7ec;
+}
+
+
+
+.page-header h1
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+    color: #c25353;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+
+
+.actions {
+    margin-right: 20px;
+    font-family: 'avenir next', sans-serif; color: #000000;
+    font-size: 10pt;
+}
+
+
+.album-form textarea,
+.album-form input {
+    width: 40%;
+}
+
+.top-menu,
+.top-menu:hover,
+.top-menu:visited {
+    color: #8a816e;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.album a,
+.album a:visited,
+.artist a,
+.artist a:visited {
+    color: #000000;
+    margin-right: 20px;
+}
+
+.album a:hover,
+.artist a:hover {
+    color: #fff7ec;
+}
+
+.is-fluid {
+    display:grid;
+    grid-template-columns: 5fr 1fr;
+}
+
+.album {
+    /* flex:1 auto; */
+    
+    border: 10px solid #fff7ec;
+    font-family: 'avenir next', sans-serif; color: #000000;
+    align-self: baseline;
+    
+}
+
+.albums {
+
+    /* display:flex; */
+    /* width: auto;
+    flex:1 auto; */
+    /* flex-grow: 1; */
+    /* flex-basis: auto; */
+    /* flex-direction: row; */
+    background-color: #d37f7f;
+    /* margin-right: 60px; */
+}
+
+.nav_bar {  
+    /* align-self: flex-start; */
+    /* grid-column-start: span; */
+    color: black;
+    background-color: rgb(211, 211, 211);
+    text-decoration: none;
+    text-align: right;
+    margin-top: 10px;
+    padding: 10px 0px 10px 10px;
+    /* border: 2px solid black */
+}
+
+.album > .date,
+.album > .actions,
+.artist > .actions {
+    float: right;
+}
+
+.btn-default,
+.btn-default:visited,
+.save {
+    color: #000000;
+    background: none;
+    border-color: #C25100;
+    float: right;
+    padding: 10px 10px 10px 10px;
+    margin-right: 20px;
+}
+
+
+.btn-default:hover {
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+
+.post-form {
+    font-family: 'avenir next', sans-serif; color: #000000;
+    margin-left: 20px; margin-top: 40px; font-size:10pt; align-items: left;}
+
+    
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:active { text-decoration: none; }
+    
+
+    
+h1,
+h1 a {
+    font-family: 'avenir next', avenir, sans-serif; color: #c25353;
+    font-size: 36pt;
+    text-decoration: none;
+
+}
+
+
+h2,
+h3 {
+    font-family: 'avenir next', avenir; color: #000000;
+    margin-left: 20px;
+}
+    
+h4,
+h5 {
+    font-family: 'avenir next', avenir, sans-serif; color: #c25353;
+    margin-left: 20px; margin-right: 20px; margin-bottom: -10px; font-size:smaller;}
+
+.artist {
+    /* color: #c25353; */
+    /* background-color: black; */
+    /* padding: 10px */
+    /* display:flex; */
+    /* flex-direction: column; */
+    /* flex:1 auto; */
+    color: black;
+    background-color: rgb(211, 211, 211);
+    text-decoration: none;
+    text-align: right;
+    margin-top: 10px;
+    padding: 10px 0px 10px 10px;
+
+}
